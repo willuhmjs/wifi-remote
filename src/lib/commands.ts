@@ -1,3 +1,5 @@
+import { API_KEY } from "$env/static/private";
+
 interface Command {
     name: string;
     command: string;
@@ -11,14 +13,8 @@ interface Remote {
 const remotesData: Remote[] = [{
     name: "pc",
     commands: [{
-        name: "shutdown",
-        command: "shutdown /s /t 60"
-    }, {
-        name: "echo",
-        command: "echo hello world"
-    }, {
         name: "curl",
-        command: "curl -I https://example.com"
+        command: `curl -X POST http://192.168.1.69:4173/pc/shutdown -H "x-api-key: ${API_KEY}"`
     }]
 }];
 
